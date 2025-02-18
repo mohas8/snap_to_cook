@@ -12,16 +12,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color(0xFFE3E8FF),
+        backgroundColor: const Color.fromARGB(255, 227, 232, 255),
         body: Center(
-          child: PriceCard(),
+          child: ProductCard(),
         ),
       ),
     );
   }
 }
 
-class PriceCard extends StatelessWidget {
+class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +30,7 @@ class PriceCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -40,35 +40,35 @@ class PriceCard extends StatelessWidget {
         ],
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Discount Tag
-          const Align(
-            alignment: Alignment.topLeft,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "50% OFF",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+          // Top section with price tag
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "50% OFF",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black54,
                 ),
-                Icon(
-                  Icons.favorite_border,
-                  color: Colors.grey,
-                  size: 24,
-                ),
-              ],
-            ),
+              ),
+              Icon(
+                Icons.favorite_border,
+                color: Colors.grey,
+                size: 20,
+              ),
+            ],
           ),
           
-          // Mi Band Image
-          Container(
-            width: 150,
-            height: 150,
-            child: CustomPaint(
+          // Product Image
+          Expanded(
+            child: Center(
+              child: Image.network(
+                'https://nikearprod.vtexassets.com/arquivos/ids/1217812-800-800?width=800&height=800&aspect=true',
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           
@@ -76,27 +76,30 @@ class PriceCard extends StatelessWidget {
           const Text(
             "Nike Air Shoes",
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: FontWeight.w500,
+              color: Colors.black87,
             ),
           ),
           
+          const SizedBox(height: 10),
+          
           // Price Section
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "450",
+                "\$450",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(width: 15),
               Text(
-                "600",
+                "\$900",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Colors.grey[400],
                   decoration: TextDecoration.lineThrough,
                 ),
@@ -108,4 +111,3 @@ class PriceCard extends StatelessWidget {
     );
   }
 }
-
