@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Rating App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -17,68 +17,56 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _rating = 0;
+
+  void _setRating(int rating) {
+    setState(() {
+      _rating = rating;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Layout Demo'),
+        title: Text('The First App'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.red,
-                  child: Center(child: Text('Row 1')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(5, (index) {
+              return IconButton(
+                icon: Icon(
+                  index < _rating ? Icons.star : Icons.star_border,
+                  color: const Color.fromARGB(255, 0, 0, 0),
                 ),
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.green,
-                  child: Center(child: Text('Row 2')),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.blue,
-                  child: Center(child: Text('Column 1')),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.orange,
-                  child: Center(child: Text('Column 2')),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                children: List.generate(4, (index) {
-                  return Container(
-                    color: Colors.purple,
-                    child: Center(child: Text('Grid $index')),
-                  );
-                }),
-              ),
-            ),
-          ],
-        ),
+                onPressed: () => _setRating(index + 1),
+              );
+            }),
+          ),
+          Text(
+            'Rating: $_rating',
+            style: TextStyle(fontSize: 24),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              // Add your submit code here!
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Submitted! Rating: $_rating')),
+              );
+            },
+            child: Text('Submit'),
+          ),
+        ],
       ),
     );
   }
