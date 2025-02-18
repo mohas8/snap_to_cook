@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,36 +11,44 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Basic UI -02",
-      home: LabClass05(),
-    );
-  }
-}
-
-class LabClass05 extends StatelessWidget {
-  const LabClass05({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Basic Flutter Design -02"),
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          width: double.infinity,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Basic Flutter UI - 02"),
+          backgroundColor: Colors.blue[400],
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: List.generate(
-              100,
-              (index) => Icon(
-                Icons.star, 
-                size: 10 + index.toDouble(),
-                color: Colors.yellow,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.abc_sharp,
+                size: 50,
+                color: Color.fromARGB(255, 255, 0, 0),
               ),
-            ),
+              const Icon(
+                Iconsax.activity,
+                size: 50,
+                color: Color.fromARGB(255, 0, 255, 0),
+              ),
+              Row(
+                children: const [
+                  Icon(
+                    Icons.access_alarm,
+                    size: 50,
+                    color: Color.fromARGB(255, 0, 0, 255),
+                  ),
+                  SizedBox(width: 20),
+                  Icon(
+                    Icons.account_circle,
+                    size: 50,
+                    color: Color.fromARGB(255, 255, 165, 0),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
