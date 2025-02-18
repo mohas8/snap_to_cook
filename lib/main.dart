@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,45 +12,100 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Basic Flutter UI - 02"),
-          backgroundColor: Colors.blue[400],
-          centerTitle: true,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.abc_sharp,
-                size: 50,
-                color: Color.fromARGB(255, 255, 0, 0),
-              ),
-              const Icon(
-                Iconsax.activity,
-                size: 50,
-                color: Color.fromARGB(255, 0, 255, 0),
-              ),
-              Row(
-                children: const [
-                  Icon(
-                    Icons.access_alarm,
-                    size: 50,
-                    color: Color.fromARGB(255, 0, 0, 255),
-                  ),
-                  SizedBox(width: 20),
-                  Icon(
-                    Icons.account_circle,
-                    size: 50,
-                    color: Color.fromARGB(255, 255, 165, 0),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        backgroundColor: const Color(0xFFE3E8FF),
+        body: Center(
+          child: PriceCard(),
         ),
       ),
     );
   }
 }
+
+class PriceCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 400,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // Discount Tag
+          const Align(
+            alignment: Alignment.topLeft,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "50% OFF",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(
+                  Icons.favorite_border,
+                  color: Colors.grey,
+                  size: 24,
+                ),
+              ],
+            ),
+          ),
+          
+          // Mi Band Image
+          Container(
+            width: 150,
+            height: 150,
+            child: CustomPaint(
+            ),
+          ),
+          
+          // Product Name
+          const Text(
+            "Nike Air Shoes",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          
+          // Price Section
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "450",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 15),
+              Text(
+                "600",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey[400],
+                  decoration: TextDecoration.lineThrough,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
