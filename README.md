@@ -1,16 +1,11 @@
-# snap_to_cook
+FlavorLens: AI-Powered Recipe Assistant
 
-A new Flutter project.
+FlavorLens is a multi-modal, AI-powered mobile app built with Flutter, designed to revolutionize meal planning. The app uses advanced technologies like generative AI, computer vision, and natural language processing to suggest personalized recipes based on user inputs such as images, voice, or text. Users can enjoy creative recipe suggestions, customized dietary options (e.g., vegetarian, halal), and a meal planning feature with to-do lists for ingredients. Our goal is to make meal planning easy, fun, and interactive.
 
-## Getting Started
+Technologies:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter (cross-platform app development)
+OpenAI API (text generation)
+Whisper (voice-to-text)
+DALL-E (recipe image generation)
+Computer Vision & NLP for enhanced user interaction
