@@ -1,113 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(SnapToCookApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class SnapToCookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 227, 232, 255),
-        body: Center(
-          child: ProductCard(),
+      title: 'SnapToCook',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+    });
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.restaurant_menu, size: 100, color: Colors.white),
+            SizedBox(height: 20),
+            Text('SnapToCook', style: TextStyle(fontSize: 24, color: Colors.white))
+          ],
         ),
       ),
     );
   }
 }
 
-class ProductCard extends StatelessWidget {
+class LoginPage extends StatelessWidget {
+  Future<User?> _signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    return await FirebaseAuth.instance.signInWithCredential(credential).then((userCredential) => userCredential.user);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      height: 400,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            User? user = await _signInWithGoogle();
+            if (user != null) {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+            }
+          },
+          child: Text('Sign in with Google'),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Top section with price tag
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "50% OFF",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
-                ),
-              ),
-              Icon(
-                Icons.favorite_border,
-                color: Colors.grey,
-                size: 20,
-              ),
-            ],
-          ),
-          
-          // Product Image
-          Expanded(
-            child: Center(
-              child: Image.network(
-                'https://nikearprod.vtexassets.com/arquivos/ids/1217812-800-800?width=800&height=800&aspect=true',
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-          
-          // Product Name
-          const Text(
-            "Nike Air Shoes",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
-            ),
-          ),
-          
-          const SizedBox(height: 10),
-          
-          // Price Section
-          Row(
-            children: [
-              const Text(
-                "\$450",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(width: 15),
-              Text(
-                "\$900",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey[400],
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('SnapToCook')),
+      body: Center(child: Text('Home Page - Select an input method.')),
     );
   }
 }
