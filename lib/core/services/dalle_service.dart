@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+// ignore: depend_on_referenced_packages
+import "package:http/http.dart" as http;
 import '../constants/app_constants.dart';
 
 class DalleService {
