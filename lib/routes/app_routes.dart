@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:snap_to_cook/routes/voice_input_screen.dart';
 import '../features/home/screens/home_screen.dart';
 import '../features/input_methods/screens/image_input_screen.dart';
+import '../features/input_methods/screens/voice_input_screen.dart';
 import '../features/input_methods/screens/text_input_screen.dart';
 import '../features/meal_planner/screens/planner_screen.dart';
 import '../features/preferences/screens/dietary_preferences_screen.dart';
@@ -19,15 +19,10 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     home: (context) => HomeScreen(),
     imageInput: (context) => ImageInputScreen(),
-    voiceInput: (context) {
-      var voiceInputScreen = VoiceInputScreen();
-      return newMethod(voiceInputScreen);
-    },
+    voiceInput: (context) => VoiceInputScreen(),
     textInput: (context) => TextInputScreen(),
     planner: (context) => PlannerScreen(),
     dietaryPreferences: (context) => DietaryPreferencesScreen(),
     shoppingList: (context) => ShoppingListScreen(),
   };
-
-  static VoiceInputScreen newMethod(VoiceInputScreen voiceInputScreen) => voiceInputScreen;
 }

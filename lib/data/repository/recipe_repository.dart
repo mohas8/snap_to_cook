@@ -1,20 +1,16 @@
-import '../models/recipe_model.dart';
+import 'package:snap_to_cook/data/models/recipe_model.dart';
+import '../../core/services/api_service.dart';
 
 class RecipeRepository {
-  
-  final List<Recipe> _recipes = [
-    Recipe(
-      id: '1',
-      name: 'Pasta Primavera',
-      description: 'Delicious pasta with fresh vegetables',
-      ingredients: ['pasta', 'tomatoes', 'basil', 'garlic'],
-      imageUrl: 'https://example.com/pasta.jpg',
-    ),
-  ];
+  final ApiService _apiService = ApiService();
 
   Future<List<Recipe>> fetchRecipes() async {
-    
-    await Future.delayed(Duration(seconds: 1));
-    return _recipes;
+    final jsonData = await _apiService.fetchRecipes();
+    if (jsonData['meals'] != null) {
+      List<dynamic> meals = jsonData['meals'];
+      return meals.map((meal) => Recipe.fromJson(meal)).toList();
+    } else {
+      return [];
+    }
   }
 }

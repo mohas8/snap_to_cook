@@ -1,3 +1,4 @@
+// lib/data/models/user_preferences_model.dart
 class UserPreferences {
   final bool isVegetarian;
   final bool isVegan;

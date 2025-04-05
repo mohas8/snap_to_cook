@@ -1,5 +1,4 @@
 class AppConstants {
-  // API key & Base URL - ideally load these from secure storage or environment variables.
-  static const String apiKey = 'YOUR_API_KEY_HERE';
-  static const String baseUrl = 'https://api.openai.com';
+  // TheMealDB API endpoint
+  static const String recipeApiUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 }

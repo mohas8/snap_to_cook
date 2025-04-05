@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../../data/repository/recipe_repository.dart';
 import '../../../data/models/recipe_model.dart';
-import '../widgets/recipe_card.dart';
+import '../../../data/repository/recipe_repository.dart';
+import '../widgets/recipe_card.dart'; 
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-
+ 
 class _HomeScreenState extends State<HomeScreen> {
   final RecipeRepository _repository = RecipeRepository();
   late Future<List<Recipe>> _recipesFuture;
-
+ 
   @override
   void initState() {
     super.initState();
     _recipesFuture = _repository.fetchRecipes();
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FlavorLens Home'),
+        title: Text('Snap to Cook Home'),
       ),
       body: FutureBuilder<List<Recipe>>(
         future: _recipesFuture,
