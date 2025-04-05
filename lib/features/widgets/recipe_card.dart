@@ -20,7 +20,7 @@ class RecipeCard extends StatelessWidget {
         title: Text(recipe.name),
         subtitle: Text(recipe.description),
         onTap: () {
-          // Navigate to a detailed recipe view if desired.
+          
         },
       ),
     );

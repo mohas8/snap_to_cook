@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/services/image_recognition_service.dart';
+import '../../../core/services/image_recognition_service.dart';
 
 class ImageInputScreen extends StatefulWidget {
   @override
@@ -11,7 +11,6 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
   String _result = '';
 
   void _processImage() async {
-    // In a real app, you would pick an image from the gallery or camera.
     String result = await _imageService.recognizeImage('path/to/image');
     setState(() {
       _result = result;

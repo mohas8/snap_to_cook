@@ -15,4 +15,3 @@ class MealCard extends StatelessWidget {
     );
   }
 }
-

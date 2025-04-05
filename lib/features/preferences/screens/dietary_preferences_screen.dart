@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:snap_to_cook/data/models/user_preferences_model.dart';
+import '../../data/models/user_preferences_model.dart';
 
 class DietaryPreferencesScreen extends StatefulWidget {
   @override
-  _DietaryPreferencesScreenState createState() =>
-      _DietaryPreferencesScreenState();
+  _DietaryPreferencesScreenState createState() => _DietaryPreferencesScreenState();
 }
 
 class _DietaryPreferencesScreenState extends State<DietaryPreferencesScreen> {

@@ -1,6 +1,7 @@
 class WhisperService {
   Future<String> transcribeAudio(String audioFilePath) async {
-    // Placeholder for voice transcription logic using Whisper API.
+    
+    await Future.delayed(Duration(seconds: 1));
     return "Transcribed text from audio";
   }
 }

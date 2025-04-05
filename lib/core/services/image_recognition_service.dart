@@ -1,6 +1,7 @@
 class ImageRecognitionService {
   Future<String> recognizeImage(String imagePath) async {
-    // Placeholder for image recognition logic.
+    
+    await Future.delayed(Duration(seconds: 1));
     return "Identified ingredients from image";
   }
 }

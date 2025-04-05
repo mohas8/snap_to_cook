@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/repository/recipe_repository.dart';
-import '../widgets/recipe_card.dart';
 import '../../../data/models/recipe_model.dart';
+import '../widgets/recipe_card.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
