@@ -89,8 +89,8 @@ Lecturer, Daffodil International University
 
 | Resource                 | Link / Location                     |
 |---------------------------|-------------------------------------|
-| 📸 App Screenshots        | [Insert Screenshot Folder Link]     |
-| 🎬 Demo Video             | [Insert YouTube / Drive Video Link] |
+| 📸 App Screenshots        | [https://drive.google.com/drive/folders/1w3XcXI4vGRqAldWyJHheLgIxmbOXx2lC?usp=sharing]     |
+| 🎬 Demo Video             | [https://drive.google.com/file/d/1jrTd853z9kf44e5Unitqcu_cyEe4J0aI/view?usp=sharing] |
 | 📄 Report Link            | [https://drive.google.com/file/d/1ETFPbFHTvxwbgmsNH08AuIZc5_T-78l5/view?usp=sharing]              |
 | 🔗 Release APK (Drive)    | [https://drive.google.com/file/d/1eDUDT7nRswrmiRH-KRWp5k7GWTO7E55N/view?usp=sharing]      |
 
